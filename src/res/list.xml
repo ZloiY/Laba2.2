@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<boook>
+        <bookname>Crime and Punishment</bookname>
+        <athuor>Dostoevski Fedor Michailovich</athuor>
+        <publisher>Classic book</publisher>
+        <numberbook>500</numberbook>
+        <edition>2</edition>
+        <all>1000</all>
+</boook>
