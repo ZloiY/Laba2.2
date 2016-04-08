@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<boook>
+<book>
         <bookname>Crime and Punishment</bookname>
         <athuor>Dostoevski Fedor Michailovich</athuor>
         <publisher>Classic book</publisher>
-        <numberbook>500</numberbook>
+        <numberbooks>500</numberbooks>
         <edition>2</edition>
         <all>1000</all>
-</boook>
+</book>

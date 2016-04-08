@@ -23,14 +23,14 @@ public class FileChoose{
         fileChooser.setTitle("Choose file");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         file = fileChooser.showOpenDialog(window);
-        try{
-            desktop.open(file);
-        }catch (IOException ex){
-            Logger.getLogger(
-                    FileChoose.class.getName()).log(
-                    Level.SEVERE, null, ex
-            );
-        }
+//        try{
+//            desktop.open(file);
+//        }catch (IOException ex){
+//            Logger.getLogger(
+//                    FileChoose.class.getName()).log(
+//                    Level.SEVERE, null, ex
+//            );
+//        }
     }
 
     public void saveFile(Stage window){

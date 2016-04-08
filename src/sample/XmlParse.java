@@ -73,7 +73,7 @@ public class XmlParse {
             doc.appendChild(rootElement);
             for (Integer i = 0; i < Controller.table.getItems().size(); i++) {
                 Element book = doc.createElement("book");
-                doc.appendChild(book);
+                rootElement.appendChild(book);
                 Element bookname = doc.createElement("bookname");
                 bookname.appendChild(doc
                         .createTextNode(Controller.table.getItems().get(i).getNameBook()));
