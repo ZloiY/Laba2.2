@@ -70,8 +70,8 @@ public class XmlParse {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
             Element rootElement = doc.createElement("books");
-            doc.appendChild(rootElement);
             for (Integer i = 0; i < Controller.table.getItems().size(); i++) {
+                doc.appendChild(rootElement);
                 Element book = doc.createElement("book");
                 rootElement.appendChild(book);
                 Element bookname = doc.createElement("bookname");
