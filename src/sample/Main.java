@@ -6,39 +6,48 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
 public class Main extends Application {
-    public static TextField numPages;
+    public  TextField numPages;
+    public static TextField numrows;
     Controller controller = new Controller();
     SettingWindow setting = new SettingWindow();
     FileChoose fileChoose = new FileChoose();
     public void start(Stage primaryStage) throws Exception{
         Stage window = primaryStage;
         BorderPane layout = new BorderPane();
-        layout.setPadding(new Insets(20, 20, 20, 20));
-        HBox buttomBox = new HBox(60);
+        layout.setPadding(new Insets(0, 0, 20, 0));
+        HBox buttomBox = new HBox(20);
         HBox pagesBox = new HBox(10);
+        Label numberOfElements = new Label();
+        VBox btn1 = new VBox(10);
+        btn1.setAlignment(Pos.CENTER);
+        VBox btn2 = new VBox(10);
+        VBox btn3 = new VBox(10);
+        btn3.setAlignment(Pos.CENTER);
+        btn2.setAlignment(Pos.CENTER);
         Text allPg = new Text();
-        Menu settingMenu = new Menu("Settings");
         Menu fileMenu = new Menu("File...");
-        MenuItem frstPg = new MenuItem("Go to first page");
-        MenuItem lstPg = new MenuItem("Go to last page");
         MenuItem openMenu = new MenuItem("Open...");
         MenuItem save = new MenuItem("Save");
-        settingMenu.getItems().addAll(frstPg, lstPg);
         fileMenu.getItems().addAll(openMenu, save);
-        setting.display();
         openMenu.setOnAction(e -> {
             fileChoose.openFile(window);
             XmlParse parse = new XmlParse();
             parse.parse(fileChoose.file);
+            numberOfElements.setText("Number of all elements:" +
+                    Integer.toString(Controller.table.getItems().size()).toString());
         });
-        frstPg.setOnAction(e -> setting.firstPage());
-        lstPg.setOnAction(e -> setting.lastPage());
+        Button frstPg = new Button("First page");
+        Button lstPg = new Button("Last Page");
+        frstPg.setOnAction(e -> setting.firstPage(Controller.table, setting.allData));
+        lstPg.setOnAction(e -> setting.lastPage(Controller.table, setting.allData));
         buttomBox.setAlignment(Pos.CENTER);
         layout.setCenter(controller.displayTable());
         numPages = new TextField("1");
@@ -55,13 +64,13 @@ public class Main extends Application {
             Integer next = Integer.parseInt(numPages.getText());
             next++;
             numPages.setText(next.toString());
-            setting.pages(Controller.table, setting.allData);
+            setting.pages(Controller.table, setting.allData, Integer.parseInt(numPages.getText()));
         });
         prevPg.setOnAction(e ->{
             Integer prev = Integer.parseInt(numPages.getText());
             prev--;
             numPages.setText(prev.toString());
-            setting.pages(Controller.table, setting.allData);
+            setting.pages(Controller.table, setting.allData, Integer.parseInt(numPages.getText()));
         });
         Button addBtn = new Button("Add element");
         addBtn.setOnAction(e -> {
@@ -79,16 +88,39 @@ public class Main extends Application {
             searchWindow.display();
         });
         save.setOnAction(e -> fileChoose.saveFile(window));
-        buttomBox.getChildren().addAll(addBtn, delBtn, findBtn, pagesBox);
+        btn1.getChildren().addAll(addBtn, frstPg);
+        btn2.getChildren().addAll(delBtn, lstPg);
+        btn3.getChildren().addAll(pagesBox, numberOfElements);
+        buttomBox.getChildren().addAll(btn1, btn2, findBtn, display(), btn3);
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().addAll(fileMenu, settingMenu);
+        menuBar.getMenus().addAll(fileMenu);
         layout.setTop(menuBar);
         layout.setBottom(buttomBox);
         window.setTitle("Laba 2");
-        window.setScene(new Scene(layout, 600, 300));
+        window.setScene(new Scene(layout, 650, 400));
         window.show();
     }
-
+    public GridPane display(){
+        GridPane grid = new GridPane();
+        grid.setVgap(10);
+        grid.setHgap(10);
+        grid.setAlignment(Pos.CENTER);
+        grid.setPadding(new Insets(20, 20, 20, 20));
+        Label label = new Label("Enter number of rows");
+        numrows = new TextField();
+        Button applyBtn = new Button("Apply");
+        Button cnclBtn = new Button("Cancel");
+        grid.add(label, 0, 0);
+        grid.add(numrows, 0, 1);
+        HBox btnBox = new HBox(10);
+        btnBox.getChildren().addAll(applyBtn, cnclBtn);
+        grid.add(btnBox, 0, 2);
+        applyBtn.setOnAction(e -> {
+            setting.action(Controller.table, setting.allData, Double.parseDouble(numrows.getText()),
+                    Integer.parseInt(numPages.getText()));
+        });
+        return grid;
+    }
 
     public static void main(String[] args) {
         launch(args);
