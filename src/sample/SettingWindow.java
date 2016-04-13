@@ -5,9 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -21,6 +19,7 @@ public class SettingWindow {
     public TextField numrows;
     public Integer allPages = 1;
     public ObservableList<BookModel> curPage;
+    public TableView<BookModel> allData = Controller.table;
 
     public void display(){
         Stage window = new Stage();
@@ -48,34 +47,34 @@ public class SettingWindow {
                     * Double.parseDouble(numrows.getText())));
             Controller.table.setMinHeight(Math.ceil(Controller.table.getFixedCellSize()
                     * Double.parseDouble(numrows.getText())));
-            pages();
+            pages(Controller.table, allData);
         });
         cnclBtn.setOnAction(e -> window.close());
         window.show();
     }
 
-    public void pages(){
-        allPages = Controller.table.getItems().size() / Integer.parseInt(numrows.getText());
+    public void pages(TableView<BookModel> mainTable, TableView secondaryData){
+        allPages = mainTable.getItems().size() / Integer.parseInt(numrows.getText());
         curPage = FXCollections.observableArrayList();
         Integer i = Integer.parseInt(Main.numPages.getText());
         if (i.equals(1)){
-            Controller.table.setItems(XmlParse.allTable);
+            mainTable.setItems(secondaryData.getItems());
             curPage.clear();
             for(i = 1; i-1 < Integer.parseInt(numrows.getText()); i++){
-                curPage.add(Controller.table.getItems().get(i));
+                curPage.add(mainTable.getItems().get(i));
             }
-            Controller.table.setItems(curPage);
+            mainTable.setItems(curPage);
         }else {
             if (i > 1) {
-                Controller.table.setItems(XmlParse.allTable);
+                mainTable.setItems(secondaryData.getItems());
                 curPage.clear();
                 i--;
                 int j;
                 for (i = i*Integer.parseInt(numrows.getText()), j = i; i < j * Integer.parseInt(Main.numPages.getText())
-                        && i < Controller.table.getItems().size(); i++) {
-                    curPage.add(Controller.table.getItems().get(i));
+                        && i < mainTable.getItems().size(); i++) {
+                    curPage.add(mainTable.getItems().get(i));
                 }
-                Controller.table.setItems(curPage);
+                mainTable.setItems(curPage);
             }
         }
     }

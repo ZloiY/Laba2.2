@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -14,93 +15,19 @@ import javafx.stage.Stage;
 public class DelWindow {
 
     private SecondaryWindow delWindow;
-    private Integer quantity = 0;
+    private TableView<BookModel> delData = new TableView<>();
 
     void display(){
         delWindow = new SecondaryWindow("Delete info", "Delete", 300, 400);
         delWindow.view();
-        delWindow.unbtn.setOnAction(e -> delBtnCliked());
+        delWindow.unbtn.setOnAction(e ->{
+            delWindow.BtnCliked();
+            delData.setItems(delWindow.getAllData().getItems());
+            Controller.table.getItems().removeAll(delData.getItems());
+            delWindowMassage(delWindow.getQuantity());
+        });
     }
 
-    void delBtnCliked(){
-        if (delWindow.athrTf.getLength() > 0){
-            for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (delWindow.athrTf.getText().contains(Controller.table.getItems().get(i).getAuthor())){
-                    Controller.table.getItems().remove(i);
-                    quantity++;
-                }
-            }
-            delWindowMassage(quantity);
-            quantity = 0;
-            return;
-        }
-
-        if (delWindow.athrTf.getLength() > 0 && delWindow.pblsTf.getLength() > 0){
-            for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (delWindow.athrTf.getText().equals(Controller.table.getItems().get(i).getAuthor())
-                        && delWindow.pblsTf.getText().equals(Controller.table.getItems().get(i).getPublisher())){
-                    Controller.table.getItems().remove(i);
-                    quantity++;
-                }
-            }
-            delWindowMassage(quantity);
-            quantity = 0;
-            return;
-        }
-
-        if (delWindow.athrTf.getLength() > 0 && (delWindow.nmbbkLowlimitTf.getLength() > 0
-                || delWindow.nmbbkUplimTf.getLength() > 0)){
-            for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (delWindow.athrTf.getText().equals(Controller.table.getItems().get(i).getAuthor())
-                        &&(Integer.parseInt(delWindow.nmbbkLowlimitTf.getText()) >= Controller.table.getItems().get(i).getNumberBook()
-                        || Integer.parseInt(delWindow.nmbbkUplimTf.getText()) <= Controller.table.getItems().get(i).getNumberBook())){
-                    Controller.table.getItems().remove(i);
-                    quantity++;
-                }
-            }
-            delWindowMassage(quantity);
-            quantity = 0;
-            return;
-        }
-
-        if (delWindow.bknmTf.getLength() > 0){
-            for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (delWindow.bknmTf.getText().equals(Controller.table.getItems().get(i).getNameBook())){
-                    Controller.table.getItems().remove(i);
-                    quantity++;
-                }
-            }
-            delWindowMassage(quantity);
-            quantity = 0;
-            return;
-        }
-
-        if (delWindow.edtnLowlimTf.getLength() > 0 || delWindow.edtnUplimTf.getLength() > 0){
-            for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (Integer.parseInt(delWindow.edtnLowlimTf.getText()) >= Controller.table.getItems().get(i).getEdition()
-                        || Integer.parseInt(delWindow.edtnUplimTf.getText()) <= Controller.table.getItems().get(i).getEdition()){
-                    Controller.table.getItems().remove(i);
-                    quantity++;
-                }
-            }
-            delWindowMassage(quantity);
-            quantity = 0;
-            return;
-        }
-
-        if (delWindow.allLowlimTf.getLength() > 0 || delWindow.allUplimTf.getLength() > 0){
-            for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (Integer.parseInt(delWindow.allLowlimTf.getText()) >= Controller.table.getItems().get(i).getAll()
-                        || Integer.parseInt(delWindow.allUplimTf.getText()) <= Controller.table.getItems().get(i).getAll()){
-                    Controller.table.getItems().remove(i);
-                    quantity++;
-                }
-            }
-            delWindowMassage(quantity);
-            quantity = 0;
-            return;
-        }
-    }
 
     void delWindowMassage(Integer quantity){
         Stage delMassage = new Stage();

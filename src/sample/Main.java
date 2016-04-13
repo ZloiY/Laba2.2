@@ -56,13 +56,13 @@ public class Main extends Application {
             Integer next = Integer.parseInt(numPages.getText());
             next++;
             numPages.setText(next.toString());
-            setting.pages();
+            setting.pages(Controller.table, setting.allData);
         });
         prevPg.setOnAction(e ->{
             Integer prev = Integer.parseInt(numPages.getText());
             prev--;
             numPages.setText(prev.toString());
-            setting.pages();
+            setting.pages(Controller.table, setting.allData);
         });
         Button addBtn = new Button("Add element");
         addBtn.setOnAction(e -> {

@@ -1,10 +1,13 @@
 package sample;
 
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -27,6 +30,10 @@ public class SecondaryWindow {
     public BorderPane layout;
     public Stage window;
     public Button unbtn;
+    public Integer quantity;
+    private FilteredList<BookModel> filteredList = new FilteredList<BookModel>(Controller.tbl, p-> true);
+    private TableView<BookModel> allData = new TableView<>();
+    private SortedList<BookModel> sortedData;
 
 
     SecondaryWindow(String titlename, String btnname, Integer height, Integer width){
@@ -61,15 +68,15 @@ public class SecondaryWindow {
         grid.add(pblsTf, 0, 5);
         nmbbkUplimTf.setMaxWidth(50.0);
         nmbbkLowlimitTf.setMaxWidth(50.0);
-        nmbbkhBox.getChildren().addAll(nmbbkUplimTf, nmbbkLowlimitTf);
+        nmbbkhBox.getChildren().addAll(nmbbkLowlimitTf, nmbbkUplimTf);
         grid.add(nmbbkhBox, 1, 1);
         edtnUplimTf.setMaxWidth(50.0);
         edtnLowlimTf.setMaxWidth(50.0);
-        edtnhBox.getChildren().addAll(edtnUplimTf, edtnLowlimTf);
+        edtnhBox.getChildren().addAll(edtnLowlimTf, edtnUplimTf);
         grid.add(edtnhBox, 1, 3);
         allUplimTf.setMaxWidth(50.0);
         allLowlimTf.setMaxWidth(50.0);
-        allhBox.getChildren().addAll(allUplimTf, allLowlimTf);
+        allhBox.getChildren().addAll(allLowlimTf, allUplimTf);
         grid.add(allhBox, 1, 5);
 
         grid.add(unbtn, 0, 6 );
@@ -78,6 +85,88 @@ public class SecondaryWindow {
         layout = new BorderPane();
         layout.setCenter(grid);
         window.setScene(new Scene(layout, width, height));
+    }
+
+    void BtnCliked(){
+        filteredList.setPredicate(p -> {
+            boolean predicate = false;
+            quantity = 0;
+            if (athrTf.getText().isEmpty()) {
+
+            }else{
+
+                if (p.getAuthor().contains(athrTf.getText())) {
+                    quantity++;
+                    return true;
+                }
+            }
+
+            if (athrTf.getText().isEmpty() && pblsTf.getText().isEmpty()){
+
+            }else{
+                if (p.getAuthor().contains(athrTf.getText())
+                        && p.getPublisher().contains(pblsTf.getText())){
+                    quantity++;
+                    return true;
+                }
+            }
+
+            if (athrTf.getText().isEmpty()
+                    && (edtnLowlimTf.getText().isEmpty() && edtnUplimTf.getText().isEmpty())){
+
+            }else{
+                if (p.getAuthor().contains(athrTf.getText())
+                        && p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
+                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())){
+                    quantity++;
+                    return true;
+                }
+            }
+
+            if (bknmTf.getText().isEmpty()){
+
+            }else{
+                if (p.getNameBook().contains(bknmTf.getText())){
+                    quantity++;
+                    return true;
+                }
+            }
+
+            if (edtnUplimTf.getText().isEmpty() && edtnLowlimTf.getText().isEmpty()){
+
+            }else{
+                if (p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
+                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())){
+                    quantity++;
+                    return true;
+                }
+            }
+
+            if (allUplimTf.getText().isEmpty() && allLowlimTf.getText().isEmpty()){
+
+            }else{
+                if (p.getAll() < Integer.parseInt(allUplimTf.getText())
+                        && p.getAll() > Integer.parseInt(allLowlimTf.getText())){
+                    quantity++;
+                    return true;
+                }
+            }
+            return predicate;
+        });
+
+        sortedData = new SortedList<>(filteredList);
+        sortedData.comparatorProperty().bind(Controller.table.comparatorProperty());
+        quantity = sortedData.size();
+        allData.setItems(sortedData);
+        allData.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    TableView getAllData(){
+        return allData;
+    }
+
+    Integer getQuantity(){
+        return quantity;
     }
 
     void view(){
