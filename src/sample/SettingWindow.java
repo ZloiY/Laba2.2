@@ -20,11 +20,9 @@ public class SettingWindow {
     public Integer allPages = 1;
     public ObservableList<BookModel> curPage;
     public TableView<BookModel> allData = Controller.table;
+    public Integer numberofrows;
 
-    public void display(){
-        Stage window = new Stage();
-        window.setTitle("Settings");
-        BorderPane mainPane = new BorderPane();
+    public GridPane display(){
         GridPane grid = new GridPane();
         grid.setVgap(10);
         grid.setHgap(10);
@@ -39,28 +37,26 @@ public class SettingWindow {
         HBox btnBox = new HBox(10);
         btnBox.getChildren().addAll(applyBtn, cnclBtn);
         grid.add(btnBox, 0, 2);
-        mainPane.setCenter(grid);
-        window.setScene(new Scene(mainPane, 300, 200));
         applyBtn.setOnAction(e ->{
             Controller.table.setFixedCellSize((Controller.table.getHeight() - 27) / Double.parseDouble(numrows.getText()));
             Controller.table.setMaxHeight(Math.ceil(Controller.table.getFixedCellSize()
                     * Double.parseDouble(numrows.getText())));
             Controller.table.setMinHeight(Math.ceil(Controller.table.getFixedCellSize()
                     * Double.parseDouble(numrows.getText())));
+            numberofrows = Integer.parseInt(numrows.getText());
             pages(Controller.table, allData);
         });
-        cnclBtn.setOnAction(e -> window.close());
-        window.show();
+        return grid;
     }
 
     public void pages(TableView<BookModel> mainTable, TableView secondaryData){
-        allPages = mainTable.getItems().size() / Integer.parseInt(numrows.getText());
+        allPages = mainTable.getItems().size() / numberofrows;
         curPage = FXCollections.observableArrayList();
         Integer i = Integer.parseInt(Main.numPages.getText());
         if (i.equals(1)){
             mainTable.setItems(secondaryData.getItems());
             curPage.clear();
-            for(i = 1; i-1 < Integer.parseInt(numrows.getText()); i++){
+            for(i = 1; i-1 < numberofrows; i++){
                 curPage.add(mainTable.getItems().get(i));
             }
             mainTable.setItems(curPage);
@@ -70,7 +66,7 @@ public class SettingWindow {
                 curPage.clear();
                 i--;
                 int j;
-                for (i = i*Integer.parseInt(numrows.getText()), j = i; i < j * Integer.parseInt(Main.numPages.getText())
+                for (i = i*numberofrows, j = i; i < j * Integer.parseInt(Main.numPages.getText())
                         && i < mainTable.getItems().size(); i++) {
                     curPage.add(mainTable.getItems().get(i));
                 }

@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 public class SearchWindow{
     private SecondaryWindow fndWindow;
     private TableView<BookModel> fndData = new TableView<>();
+    private SettingWindow setting = new SettingWindow();
 
     void display(){
         fndWindow = new SecondaryWindow("Search", "Find", 300, 800);
@@ -19,6 +20,7 @@ public class SearchWindow{
         fndWindow.unbtn.setOnAction(e ->{
             fndWindow.BtnCliked();
             fndData.setItems(fndWindow.getAllData().getItems());
+            setting.pages(fndData, fndWindow.getAllData());
         });
     }
 

@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,21 +19,19 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Stage window = primaryStage;
         BorderPane layout = new BorderPane();
+        layout.setPadding(new Insets(20, 20, 20, 20));
         HBox buttomBox = new HBox(60);
         HBox pagesBox = new HBox(10);
         Text allPg = new Text();
         Menu settingMenu = new Menu("Settings");
         Menu fileMenu = new Menu("File...");
-        MenuItem rows = new MenuItem("Rows...");
         MenuItem frstPg = new MenuItem("Go to first page");
         MenuItem lstPg = new MenuItem("Go to last page");
         MenuItem openMenu = new MenuItem("Open...");
         MenuItem save = new MenuItem("Save");
-        settingMenu.getItems().addAll(rows, frstPg, lstPg);
+        settingMenu.getItems().addAll(frstPg, lstPg);
         fileMenu.getItems().addAll(openMenu, save);
-        rows.setOnAction(e -> {
-            setting.display();
-        });
+        setting.display();
         openMenu.setOnAction(e -> {
             fileChoose.openFile(window);
             XmlParse parse = new XmlParse();
