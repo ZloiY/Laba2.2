@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<book>
-        <bookname>Crime and Punishment</bookname>
-        <athuor>
+<doc>
+        <book>
+                <bookname>Crime and Punishment</bookname>
                 <name>Fedor</name>
                 <surname>Dostoevski</surname>
                 <secondname>Mihailovich</secondname>
-        </athuor>
-        <publisher>Classic book</publisher>
-        <numberbooks>500</numberbooks>
-        <edition>2</edition>
-        <all>1000</all>
-</book>
+                <publisher>Classic book</publisher>
+                <numberbooks>500</numberbooks>
+                <edition>2</edition>
+                <all>1000</all>
+        </book>
+</doc>

@@ -2,7 +2,9 @@
 <doc>
     <book>
         <bookname>Aaa</bookname>
-        <athuor>Bbb</athuor>
+        <name>Bbb</name>
+        <surname>Bbb</surname>
+        <secondname>Bbb</secondname>
         <publisher>Ccc</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -10,7 +12,9 @@
     </book>
     <book>
         <bookname>Aaa</bookname>
-        <athuor>Bbb</athuor>
+        <name>Bbb</name>
+        <surname>Bbb</surname>
+        <secondname>Bbb</secondname>
         <publisher>Ccc</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -18,7 +22,9 @@
     </book>
     <book>
         <bookname>Ddd</bookname>
-        <athuor>Fff</athuor>
+        <name>Fff</name>
+        <surname>Fff</surname>
+        <secondname>Fff</secondname>
         <publisher>Ggg</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -26,7 +32,9 @@
     </book>
     <book>
         <bookname>Ddd</bookname>
-        <athuor>Fff</athuor>
+        <name>Fff</name>
+        <surname>Fff</surname>
+        <secondname>Fff</secondname>
         <publisher>Ggg</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -34,7 +42,9 @@
     </book>
     <book>
         <bookname>Hhh</bookname>
-        <athuor>Iii</athuor>
+        <name>Iii</name>
+        <surname>Iii</surname>
+        <secondname>Iii</secondname>
         <publisher>Jjj</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -42,7 +52,9 @@
     </book>
     <book>
         <bookname>Hhh</bookname>
-        <athuor>Iii</athuor>
+        <name>Iii</name>
+        <surname>Iii</surname>
+        <secondname>Iii</secondname>
         <publisher>Jjj</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -50,7 +62,9 @@
     </book>
     <book>
         <bookname>Lll</bookname>
-        <athuor>Mmm</athuor>
+        <name>Mmm</name>
+        <surname>Mmm</surname>
+        <secondname>Mmm</secondname>
         <publisher>Nnn</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -58,7 +72,9 @@
     </book>
     <book>
         <bookname>Lll</bookname>
-        <athuor>Mmm</athuor>
+        <name>Mmm</name>
+        <surname>Mmm</surname>
+        <secondname>Mmm</secondname>
         <publisher>Nnn</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -66,7 +82,9 @@
     </book>
     <book>
         <bookname>Ooo</bookname>
-        <athuor>Ppp</athuor>
+        <name>Ppp</name>
+        <surname>Ppp</surname>
+        <secondname>Ppp</secondname>
         <publisher>Kkk</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -74,7 +92,9 @@
     </book>
     <book>
         <bookname>Ooo</bookname>
-        <athuor>Ppp</athuor>
+        <name>Ppp</name>
+        <surname>Ppp</surname>
+        <secondname>Ppp</secondname>
         <publisher>Kkk</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -82,7 +102,9 @@
     </book>
     <book>
         <bookname>Xxx</bookname>
-        <athuor>Yyy</athuor>
+        <name>Yyy</name>
+        <surname>Yyy</surname>
+        <secondname>Yyy</secondname>
         <publisher>Zzz</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -90,15 +112,9 @@
     </book>
     <book>
         <bookname>Xxx</bookname>
-        <athuor>Yyy</athuor>
-        <publisher>Zzz</publisher>
-        <numberbooks>777</numberbooks>
-        <edition>888</edition>
-        <all>999</all>
-    </book>
-    <book>
-        <bookname>Xxx</bookname>
-        <athuor>Yyy</athuor>
+        <name>Yyy</name>
+        <surname>Yyy</surname>
+        <secondname>Yyy</secondname>
         <publisher>Zzz</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -106,7 +122,9 @@
     </book>
     <book>
         <bookname>Aaa</bookname>
-        <athuor>Bbb</athuor>
+        <name>Bbb</name>
+        <surname>Bbb</surname>
+        <secondname>Bbb</secondname>
         <publisher>Ccc</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -114,7 +132,9 @@
     </book>
     <book>
         <bookname>Aaa</bookname>
-        <athuor>Bbb</athuor>
+        <name>Bbb</name>
+        <surname>Bbb</surname>
+        <secondname>Bbb</secondname>
         <publisher>Ccc</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -122,7 +142,9 @@
     </book>
     <book>
         <bookname>Ddd</bookname>
-        <athuor>Fff</athuor>
+        <name>Fff</name>
+        <surname>Fff</surname>
+        <secondname>Fff</secondname>
         <publisher>Ggg</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -130,7 +152,9 @@
     </book>
     <book>
         <bookname>Ddd</bookname>
-        <athuor>Fff</athuor>
+        <name>Fff</name>
+        <surname>Fff</surname>
+        <secondname>Fff</secondname>
         <publisher>Ggg</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -138,7 +162,9 @@
     </book>
     <book>
         <bookname>Hhh</bookname>
-        <athuor>Iii</athuor>
+        <name>Iii</name>
+        <surname>Iii</surname>
+        <secondname>Iii</secondname>
         <publisher>Jjj</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -146,7 +172,9 @@
     </book>
     <book>
         <bookname>Hhh</bookname>
-        <athuor>Iii</athuor>
+        <name>Iii</name>
+        <surname>Iii</surname>
+        <secondname>Iii</secondname>
         <publisher>Jjj</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -154,7 +182,9 @@
     </book>
     <book>
         <bookname>Lll</bookname>
-        <athuor>Mmm</athuor>
+        <name>Mmm</name>
+        <surname>Mmm</surname>
+        <secondname>Mmm</secondname>
         <publisher>Nnn</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -162,7 +192,9 @@
     </book>
     <book>
         <bookname>Lll</bookname>
-        <athuor>Mmm</athuor>
+        <name>Mmm</name>
+        <surname>Mmm</surname>
+        <secondname>Mmm</secondname>
         <publisher>Nnn</publisher>
         <numberbooks>111</numberbooks>
         <edition>222</edition>
@@ -170,7 +202,9 @@
     </book>
     <book>
         <bookname>Ooo</bookname>
-        <athuor>Ppp</athuor>
+        <name>Ppp</name>
+        <surname>Ppp</surname>
+        <secondname>Ppp</secondname>
         <publisher>Kkk</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -178,7 +212,9 @@
     </book>
     <book>
         <bookname>Ooo</bookname>
-        <athuor>Ppp</athuor>
+        <name>Ppp</name>
+        <surname>Ppp</surname>
+        <secondname>Ppp</secondname>
         <publisher>Kkk</publisher>
         <numberbooks>444</numberbooks>
         <edition>555</edition>
@@ -186,7 +222,9 @@
     </book>
     <book>
         <bookname>Xxx</bookname>
-        <athuor>Yyy</athuor>
+        <name>Yyy</name>
+        <surname>Yyy</surname>
+        <secondname>Yyy</secondname>
         <publisher>Zzz</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
@@ -194,15 +232,9 @@
     </book>
     <book>
         <bookname>Xxx</bookname>
-        <athuor>Yyy</athuor>
-        <publisher>Zzz</publisher>
-        <numberbooks>777</numberbooks>
-        <edition>888</edition>
-        <all>999</all>
-    </book>
-    <book>
-        <bookname>Xxx</bookname>
-        <athuor>Yyy</athuor>
+        <name>Yyy</name>
+        <surname>Yyy</surname>
+        <secondname>Yyy</secondname>
         <publisher>Zzz</publisher>
         <numberbooks>777</numberbooks>
         <edition>888</edition>
