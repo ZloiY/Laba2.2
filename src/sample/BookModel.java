@@ -6,6 +6,9 @@ package sample;
 public class BookModel {
     private String nameBook;
     private String author;
+    private String athrName;
+    private String athrSurName;
+    private String athrSecndName;
     private String publisher;
     private Integer numberBook;
     private Integer edition;
@@ -34,8 +37,36 @@ public class BookModel {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(String athrName, String athrSecndName, String athrSurName) {
+        this.author = athrName + " " + athrSecndName + " " + athrSurName;
+    }
+
+    public void setAuthor(String author){
         this.author = author;
+    }
+
+    public String getAthrName() {
+        return athrName;
+    }
+
+    public void setAthrName(String athrName) {
+        this.athrName = athrName;
+    }
+
+    public String getAthrSurName() {
+        return athrSurName;
+    }
+
+    public void setAthrSurName(String athrSurName) {
+        this.athrSurName = athrSurName;
+    }
+
+    public String getAthrSecndName() {
+        return athrSecndName;
+    }
+
+    public void setAthrSecndName(String athrSecndName) {
+        this.athrSecndName = athrSecndName;
     }
 
     public String getPublisher() {

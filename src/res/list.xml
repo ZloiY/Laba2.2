@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book>
         <bookname>Crime and Punishment</bookname>
-        <athuor>Dostoevski Fedor Michailovich</athuor>
+        <athuor>
+                <name>Fedor</name>
+                <surname>Dostoevski</surname>
+                <secondname>Mihailovich</secondname>
+        </athuor>
         <publisher>Classic book</publisher>
         <numberbooks>500</numberbooks>
         <edition>2</edition>

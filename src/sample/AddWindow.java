@@ -17,7 +17,9 @@ public class AddWindow {
 
     sample.BookModel item = new BookModel();
     TextField bknmTf = new TextField();
-    TextField athrTf = new TextField();
+    TextField athrNmTf = new TextField();
+    TextField athrSrNmTf = new TextField();
+    TextField athrScNmTf = new TextField();
     TextField pblsTf = new TextField();
     TextField nmbbkTf = new TextField();
     TextField edtTf = new TextField();
@@ -29,10 +31,14 @@ public class AddWindow {
         window.setTitle("Enter information");
 
         GridPane grid = new GridPane();
+        HBox athrNmBox = new HBox(10);
+        athrNmBox.getChildren().addAll(athrNmTf, athrSrNmTf, athrScNmTf);
         grid.setAlignment(Pos.CENTER);
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.setVgap(10);
         grid.setHgap(10);
+
+        athrNmBox.setMaxWidth(150);
 
         Label bknmLbl = new Label("Book Name:");
         grid.add(bknmLbl, 0, 0);
@@ -49,8 +55,7 @@ public class AddWindow {
 
         bknmTf.setPromptText("Enter book name");
         grid.add(bknmTf, 0, 1);
-        athrTf.setPromptText("Enter author name");
-        grid.add(athrTf, 0, 3);
+        grid.add(athrNmBox, 0, 3);
         pblsTf.setPromptText("Enter publisher name");
         grid.add(pblsTf, 0, 5);
         nmbbkTf.setPromptText("Enter book number");
@@ -74,13 +79,16 @@ public class AddWindow {
     void addBtnClicked(){
 
         if (   bknmTf.getLength() > 0
-                && athrTf.getLength() > 0
+                && athrNmTf.getLength() > 0
                 && pblsTf.getLength() > 0
                 && nmbbkTf.getLength() > 0
                 && edtTf.getLength() > 0
                 && allTf.getLength() >0){
             item.setNameBook(bknmTf.getText());
-            item.setAuthor(athrTf.getText());
+            item.setAthrName(athrNmTf.getText());
+            item.setAthrSurName(athrSrNmTf.getText());
+            item.setAthrSecndName(athrScNmTf.getText());
+            item.setAuthor(athrNmTf.getText(), athrSrNmTf.getText(), athrScNmTf.getText());
             item.setPublisher(pblsTf.getText());
             item.setNumberBook(Integer.parseInt(nmbbkTf.getText()));
             item.setEdition(Integer.parseInt(edtTf.getText()));

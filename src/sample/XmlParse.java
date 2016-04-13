@@ -34,10 +34,21 @@ public class XmlParse {
                             .item(0)
                             .getTextContent());
                     String athourname = element
-                            .getElementsByTagName("athuor")
+                            .getElementsByTagName("name")
                             .item(0)
                             .getTextContent();
-                    tblItem.setAuthor(athourname);
+                    tblItem.setAthrName(athourname);
+                    String athoursurname = element
+                            .getElementsByTagName("surname")
+                            .item(0)
+                            .getTextContent();
+                    tblItem.setAthrSurName(athoursurname);
+                    String athoursecondname = element
+                            .getElementsByTagName("secondname")
+                            .item(0)
+                            .getTextContent();
+                    tblItem.setAthrSecndName(athoursecondname);
+                    tblItem.setAuthor(tblItem.getAthrName(),tblItem.getAthrSecndName(), tblItem.getAthrSurName());
                     tblItem.setPublisher(element
                             .getElementsByTagName("publisher")
                             .item(0)
@@ -69,35 +80,51 @@ public class XmlParse {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
-            Element rootElement = doc.createElement("books");
+            Element rootElement = doc.createElement("doc");
+            doc.appendChild(rootElement);
             for (Integer i = 0; i < Controller.table.getItems().size(); i++) {
-                doc.appendChild(rootElement);
                 Element book = doc.createElement("book");
-                rootElement.appendChild(book);
                 Element bookname = doc.createElement("bookname");
                 bookname.appendChild(doc
                         .createTextNode(Controller.table.getItems().get(i).getNameBook()));
                 rootElement.appendChild(bookname);
-                Element athuor = doc.createElement("athuor");
-                athuor.appendChild(doc
-                        .createTextNode(Controller.table.getItems().get(i).getAuthor()));
-                rootElement.appendChild(athuor);
+                book.appendChild(bookname);
+                Element athuorname = doc.createElement("name");
+                athuorname.appendChild(doc
+                        .createTextNode(Controller.table.getItems().get(i).getAthrName()));
+                rootElement.appendChild(athuorname);
+                book.appendChild(athuorname);
+                Element athuorsurname = doc.createElement("surname");
+                athuorsurname.appendChild(doc
+                        .createTextNode(Controller.table.getItems().get(i).getAthrSurName()));
+                rootElement.appendChild(athuorsurname);
+                book.appendChild(athuorsurname);
+                Element athuorsecondname = doc.createElement("secondname");
+                athuorsecondname.appendChild(doc
+                        .createTextNode(Controller.table.getItems().get(i).getAthrName()));
+                rootElement.appendChild(athuorsecondname);
+                book.appendChild(athuorsecondname);
                 Element publisher = doc.createElement("publisher");
                 publisher.appendChild(doc
                         .createTextNode(Controller.table.getItems().get(i).getPublisher()));
                 rootElement.appendChild(publisher);
+                book.appendChild(publisher);
                 Element numberbooks = doc.createElement("numberbooks");
                 numberbooks.appendChild(doc
                         .createTextNode(Controller.table.getItems().get(i).getNumberBook().toString()));
                 rootElement.appendChild(numberbooks);
+                book.appendChild(numberbooks);
                 Element edition = doc.createElement("edition");
                 edition.appendChild(doc
                         .createTextNode(Controller.table.getItems().get(i).getEdition().toString()));
                 rootElement.appendChild(edition);
+                book.appendChild(edition);
                 Element all = doc.createElement("all");
                 all.appendChild(doc
                         .createTextNode(Controller.table.getItems().get(i).getAll().toString()));
                 rootElement.appendChild(all);
+                book.appendChild(all);
+                rootElement.appendChild(book);
             }
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();

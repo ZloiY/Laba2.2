@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 /**
  * Created by NoRFolf on 23.03.2016.
  */
@@ -24,13 +25,14 @@ public class DelWindow {
     void delBtnCliked(){
         if (delWindow.athrTf.getLength() > 0){
             for (int i = 0; i < Controller.table.getItems().size(); i++){
-                if (delWindow.athrTf.getText().equals(Controller.table.getItems().get(i).getAuthor())){
+                if (delWindow.athrTf.getText().contains(Controller.table.getItems().get(i).getAuthor())){
                     Controller.table.getItems().remove(i);
                     quantity++;
                 }
             }
             delWindowMassage(quantity);
             quantity = 0;
+            return;
         }
 
         if (delWindow.athrTf.getLength() > 0 && delWindow.pblsTf.getLength() > 0){
@@ -43,6 +45,7 @@ public class DelWindow {
             }
             delWindowMassage(quantity);
             quantity = 0;
+            return;
         }
 
         if (delWindow.athrTf.getLength() > 0 && (delWindow.nmbbkLowlimitTf.getLength() > 0
@@ -57,6 +60,7 @@ public class DelWindow {
             }
             delWindowMassage(quantity);
             quantity = 0;
+            return;
         }
 
         if (delWindow.bknmTf.getLength() > 0){
@@ -68,6 +72,7 @@ public class DelWindow {
             }
             delWindowMassage(quantity);
             quantity = 0;
+            return;
         }
 
         if (delWindow.edtnLowlimTf.getLength() > 0 || delWindow.edtnUplimTf.getLength() > 0){
@@ -80,6 +85,7 @@ public class DelWindow {
             }
             delWindowMassage(quantity);
             quantity = 0;
+            return;
         }
 
         if (delWindow.allLowlimTf.getLength() > 0 || delWindow.allUplimTf.getLength() > 0){
@@ -92,6 +98,7 @@ public class DelWindow {
             }
             delWindowMassage(quantity);
             quantity = 0;
+            return;
         }
     }
 
