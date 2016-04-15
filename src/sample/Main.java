@@ -109,13 +109,13 @@ public class Main extends Application {
         Label label = new Label("Enter number of rows");
         numrows = new TextField();
         Button applyBtn = new Button("Apply");
-        Button cnclBtn = new Button("Cancel");
         grid.add(label, 0, 0);
         grid.add(numrows, 0, 1);
         HBox btnBox = new HBox(10);
-        btnBox.getChildren().addAll(applyBtn, cnclBtn);
+        btnBox.getChildren().addAll(applyBtn);
         grid.add(btnBox, 0, 2);
         applyBtn.setOnAction(e -> {
+            setting.setAllData();
             setting.action(Controller.table, setting.allData, Double.parseDouble(numrows.getText()),
                     Integer.parseInt(numPages.getText()));
         });

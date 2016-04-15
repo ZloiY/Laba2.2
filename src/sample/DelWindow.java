@@ -24,7 +24,8 @@ public class DelWindow {
             delWindow.BtnCliked();
             delData.setItems(delWindow.getAllData().getItems());
             Controller.table.getItems().removeAll(delData.getItems());
-            delWindowMassage(delWindow.getQuantity());
+            delWindowMassage(delWindow.getQuantity()
+            );
         });
     }
 

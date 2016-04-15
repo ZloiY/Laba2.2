@@ -33,4 +33,8 @@ public class Controller {
         return table;
     }
 
+    public static void setTable(TableView<BookModel> newTable){
+        table.setItems(newTable.getItems());
+    }
+
 }

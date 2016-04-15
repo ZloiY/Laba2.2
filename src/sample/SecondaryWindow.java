@@ -161,7 +161,7 @@ public class SecondaryWindow {
         allData.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
-    TableView getAllData(){
+    TableView<BookModel> getAllData(){
         return allData;
     }
 

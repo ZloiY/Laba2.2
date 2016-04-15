@@ -20,10 +20,12 @@ public class SettingWindow {
     public ObservableList<BookModel> curPage;
     public TableView<BookModel> allData = new TableView<>();
 
+    public void setAllData(){
+        allData.setItems(Controller.table.getItems());
+    }
 
     public void action(TableView table, TableView allData, Double numrows, Integer numPages){
         table.setFixedCellSize(table.getHeight() / numrows);
-        allData.setItems(Controller.table.getItems());
         table.setMaxHeight(Math.ceil(table.getFixedCellSize()
                 * numrows));
         table.setMinHeight(Math.ceil(table.getFixedCellSize()
