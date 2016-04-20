@@ -22,29 +22,17 @@ public class SearchWindow{
         fndWindow = new SecondaryWindow("Search", "Find", 300, 800);
         fndWindow.view();
         VBox tableInterface = new VBox(20);
-        HBox pagesInterface = new HBox(10);
         numPage = new TextField("1");
-        numPage.setMaxWidth(30);
-        Label allPage = new Label();
-        Button nextBtn = new Button(">>");
-        nextBtn.setOnAction(e -> nextBtnCliked());
-        Button prevBtn = new Button("<<");
-        Button frstPg = new Button("First Page");
-        Button lastPg = new Button("Last Page");
-        prevBtn.setOnAction(e -> prevBtnCliked());
-        fndData.getColumns().addAll(Controller.table.getColumns());
-        tableInterface.getChildren().addAll(fndData, pagesInterface);
         fndWindow.layout.setRight(tableInterface);
+        tableInterface.getChildren().add(fndData);
         fndWindow.unbtn.setOnAction(e ->{
             fndWindow.BtnCliked();
+            fndData.getColumns().addAll(Controller.table.getColumns());
             fndData.setItems(fndWindow.getAllData().getItems());
-            Double pages = Math.ceil(fndData.getItems().size() / Integer.parseInt(Main.numrows.getText()));
-            allPage.setText(pages.toString());
-            frstPg.setOnAction(event -> setting.firstPage(fndData, fndWindow.getAllData()));
-            frstPg.setOnAction(event -> setting.lastPage(fndData, fndWindow.getAllData()));
-            pagesInterface.getChildren().addAll(numPage, allPage, prevBtn, nextBtn, frstPg, lastPg);
+            Integer pages = fndData.getItems().size() / Integer.parseInt(Main.numrows.getText())+1;
             setting.action(fndData, fndWindow.getAllData(), Double.parseDouble(Main.numrows.getText()),
                     Integer.parseInt(numPage.getText()));
+            tableInterface.getChildren().addAll(setting.view(fndData, fndWindow.getAllData(), Integer.parseInt(numPage.getText()), pages));
         });
     }
 

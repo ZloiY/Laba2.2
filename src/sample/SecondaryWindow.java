@@ -31,12 +31,12 @@ public class SecondaryWindow {
     public Stage window;
     public Button unbtn;
     public Integer quantity;
-    private FilteredList<BookModel> filteredList = new FilteredList<BookModel>(Controller.tbl, p-> true);
+    private FilteredList<BookModel> filteredList = new FilteredList<BookModel>(Controller.tbl, p -> true);
     private TableView<BookModel> allData = new TableView<>();
     private SortedList<BookModel> sortedData;
 
 
-    SecondaryWindow(String titlename, String btnname, Integer height, Integer width){
+    SecondaryWindow(String titlename, String btnname, Integer height, Integer width) {
         window = new Stage();
         window.setTitle(titlename);
         GridPane grid = new GridPane();
@@ -53,7 +53,7 @@ public class SecondaryWindow {
         Label bknmLbl = new Label("Enter book name:");
         grid.add(bknmLbl, 0, 0);
         Label athrLbl = new Label("Enter author name:");
-        grid.add(athrLbl,0, 2);
+        grid.add(athrLbl, 0, 2);
         Label pblsLbl = new Label("Enter publisher name:");
         grid.add(pblsLbl, 0, 4);
         Label nmbbkLbl = new Label("Enter upper and lower limit of number book:");
@@ -79,7 +79,7 @@ public class SecondaryWindow {
         allhBox.getChildren().addAll(allLowlimTf, allUplimTf);
         grid.add(allhBox, 1, 5);
 
-        grid.add(unbtn, 0, 6 );
+        grid.add(unbtn, 0, 6);
         grid.add(canclBtn, 1, 6);
         canclBtn.setOnAction(e -> window.close());
         layout = new BorderPane();
@@ -87,13 +87,13 @@ public class SecondaryWindow {
         window.setScene(new Scene(layout, width, height));
     }
 
-    void BtnCliked(){
+    void BtnCliked() {
         filteredList.setPredicate(p -> {
             boolean predicate = false;
             quantity = 0;
             if (athrTf.getText().isEmpty()) {
 
-            }else{
+            } else {
 
                 if (p.getAuthor().contains(athrTf.getText())) {
                     quantity++;
@@ -101,52 +101,52 @@ public class SecondaryWindow {
                 }
             }
 
-            if (athrTf.getText().isEmpty() && pblsTf.getText().isEmpty()){
+            if (athrTf.getText().isEmpty() && pblsTf.getText().isEmpty()) {
 
-            }else{
+            } else {
                 if (p.getAuthor().contains(athrTf.getText())
-                        && p.getPublisher().contains(pblsTf.getText())){
+                        && p.getPublisher().contains(pblsTf.getText())) {
                     quantity++;
                     return true;
                 }
             }
 
             if (athrTf.getText().isEmpty()
-                    && (edtnLowlimTf.getText().isEmpty() && edtnUplimTf.getText().isEmpty())){
+                    && (edtnLowlimTf.getText().isEmpty() && edtnUplimTf.getText().isEmpty())) {
 
-            }else{
+            } else {
                 if (p.getAuthor().contains(athrTf.getText())
                         && p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
-                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())){
+                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
                     quantity++;
                     return true;
                 }
             }
 
-            if (bknmTf.getText().isEmpty()){
+            if (bknmTf.getText().isEmpty()) {
 
-            }else{
-                if (p.getNameBook().contains(bknmTf.getText())){
+            } else {
+                if (p.getNameBook().contains(bknmTf.getText())) {
                     quantity++;
                     return true;
                 }
             }
 
-            if (edtnUplimTf.getText().isEmpty() && edtnLowlimTf.getText().isEmpty()){
+            if (edtnUplimTf.getText().isEmpty() && edtnLowlimTf.getText().isEmpty()) {
 
-            }else{
+            } else {
                 if (p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
-                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())){
+                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
                     quantity++;
                     return true;
                 }
             }
 
-            if (allUplimTf.getText().isEmpty() && allLowlimTf.getText().isEmpty()){
+            if (allUplimTf.getText().isEmpty() && allLowlimTf.getText().isEmpty()) {
 
-            }else{
+            } else {
                 if (p.getAll() < Integer.parseInt(allUplimTf.getText())
-                        && p.getAll() > Integer.parseInt(allLowlimTf.getText())){
+                        && p.getAll() > Integer.parseInt(allLowlimTf.getText())) {
                     quantity++;
                     return true;
                 }
@@ -161,15 +161,15 @@ public class SecondaryWindow {
         allData.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
-    TableView<BookModel> getAllData(){
+    TableView<BookModel> getAllData() {
         return allData;
     }
 
-    Integer getQuantity(){
+    Integer getQuantity() {
         return quantity;
     }
 
-    void view(){
+    void view() {
         window.show();
     }
 }

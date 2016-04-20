@@ -24,6 +24,8 @@ public class SettingWindow {
         allData.setItems(Controller.table.getItems());
     }
 
+    public Integer getAllPages(){return allPages;}
+
     public void action(TableView table, TableView allData, Double numrows, Integer numPages){
         table.setFixedCellSize(table.getHeight() / numrows);
         table.setMaxHeight(Math.ceil(table.getFixedCellSize()
@@ -83,6 +85,41 @@ public class SettingWindow {
                 return;
             }
         }
+    }
+
+    public GridPane view(TableView<BookModel> mainTable, TableView secondaryTable, Integer currPageIndex, Integer allPgs){
+        GridPane mainLayout = new GridPane();
+        HBox pgsBox = new HBox(10);
+        HBox nextPrevBox = new HBox(10);
+        TextField currPg = new TextField();
+        currPg.setMaxWidth(40);
+        currPg.setText(currPageIndex.toString());
+        Label allPg = new Label("/" + allPgs);
+        Button nextBtn = new Button(">>");
+        Button prevBtn = new Button("<<");
+        Button frstPg = new Button("First Page");
+        Button lstPg = new Button("Last Page");
+        pgsBox.getChildren().addAll(currPg, allPg);
+        nextPrevBox.getChildren().addAll(prevBtn, nextBtn);
+        mainLayout.setAlignment(Pos.CENTER);
+        mainLayout.add(pgsBox, 0, 0);
+        mainLayout.add(nextPrevBox, 1, 0);
+        mainLayout.add(frstPg, 0, 1);
+        mainLayout.add(lstPg, 1, 1);
+        nextBtn.setOnAction(e -> {
+            Integer nextPg = Integer.parseInt(currPg.getText()) + 1;
+            currPg.setText(nextPg.toString());
+            pages(mainTable, secondaryTable, nextPg);
+        });
+        prevBtn.setOnAction(e -> {
+            Integer prevPg = Integer.parseInt(currPg.getText()) - 1;
+            currPg.setText(prevPg.toString());
+            pages(mainTable, secondaryTable, prevPg);
+        });
+        frstPg.setOnAction(e -> firstPage(mainTable, secondaryTable));
+        lstPg.setOnAction(e -> lastPage(mainTable, secondaryTable));
+
+        return mainLayout;
     }
 
 }
