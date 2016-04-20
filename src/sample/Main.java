@@ -55,7 +55,7 @@ public class Main extends Application {
             searchWindow.display();
         });
         save.setOnAction(e -> fileChoose.saveFile(window));
-        buttomBox.getChildren().addAll(addBtn, delBtn, findBtn, display(),
+        buttomBox.getChildren().addAll(addBtn, delBtn, findBtn,
                 setting.view(Controller.table, setting.allData ,Integer.parseInt(numPages.getText()), setting.getAllPages()));
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().addAll(fileMenu);
@@ -64,27 +64,6 @@ public class Main extends Application {
         window.setTitle("Laba 2");
         window.setScene(new Scene(layout, 650, 400));
         window.show();
-    }
-    public GridPane display(){
-        GridPane grid = new GridPane();
-        grid.setVgap(10);
-        grid.setHgap(10);
-        grid.setAlignment(Pos.CENTER);
-        grid.setPadding(new Insets(20, 20, 20, 20));
-        Label label = new Label("Enter number of rows");
-        numrows = new TextField();
-        Button applyBtn = new Button("Apply");
-        grid.add(label, 0, 0);
-        grid.add(numrows, 0, 1);
-        HBox btnBox = new HBox(10);
-        btnBox.getChildren().addAll(applyBtn);
-        grid.add(btnBox, 0, 2);
-        applyBtn.setOnAction(e -> {
-            setting.setAllData();
-            setting.action(Controller.table, setting.allData, Double.parseDouble(numrows.getText()),
-                    Integer.parseInt(numPages.getText()));
-        });
-        return grid;
     }
 
     public static void main(String[] args) {
