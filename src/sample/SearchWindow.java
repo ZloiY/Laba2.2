@@ -36,18 +36,4 @@ public class SearchWindow{
         });
     }
 
-    void nextBtnCliked(){
-        Integer pageNumber = Integer.parseInt(numPage.getText());
-        pageNumber++;
-        numPage.setText(pageNumber.toString());
-        setting.pages(fndData, fndWindow.getAllData(), pageNumber);
-    }
-
-    void prevBtnCliked(){
-        Integer pageNumber = Integer.parseInt(numPage.getText());
-        pageNumber--;
-        numPage.setText(pageNumber.toString());
-        setting.pages(fndData, fndWindow.getAllData(), pageNumber);
-    }
-
 }
