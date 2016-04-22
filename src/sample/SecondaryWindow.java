@@ -96,7 +96,6 @@ public class SecondaryWindow {
             } else {
 
                 if (p.getAuthor().contains(athrTf.getText())) {
-                    quantity++;
                     return true;
                 }
             }
@@ -106,7 +105,6 @@ public class SecondaryWindow {
             } else {
                 if (p.getAuthor().contains(athrTf.getText())
                         && p.getPublisher().contains(pblsTf.getText())) {
-                    quantity++;
                     return true;
                 }
             }
@@ -118,7 +116,6 @@ public class SecondaryWindow {
                 if (p.getAuthor().contains(athrTf.getText())
                         && p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
                         && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
-                    quantity++;
                     return true;
                 }
             }
@@ -127,7 +124,6 @@ public class SecondaryWindow {
 
             } else {
                 if (p.getNameBook().contains(bknmTf.getText())) {
-                    quantity++;
                     return true;
                 }
             }
