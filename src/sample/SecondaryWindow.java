@@ -91,61 +91,37 @@ public class SecondaryWindow {
         filteredList.setPredicate(p -> {
             boolean predicate = false;
             quantity = 0;
-            if (athrTf.getText().isEmpty()) {
-
-            } else {
-
-                if (p.getAuthor().contains(athrTf.getText())) {
-                    return true;
-                }
+            if (!athrTf.getText().isEmpty() && p.getAuthor().contains(athrTf.getText())) {
+                return true;
             }
 
-            if (athrTf.getText().isEmpty() && pblsTf.getText().isEmpty()) {
-
-            } else {
-                if (p.getAuthor().contains(athrTf.getText())
-                        && p.getPublisher().contains(pblsTf.getText())) {
-                    return true;
-                }
+            if ((!athrTf.getText().isEmpty() && !pblsTf.getText().isEmpty())
+                    &&(p.getAuthor().contains(athrTf.getText()) && p.getPublisher().contains(pblsTf.getText()))) {
+                return true;
             }
 
-            if (athrTf.getText().isEmpty()
-                    && (edtnLowlimTf.getText().isEmpty() && edtnUplimTf.getText().isEmpty())) {
-
-            } else {
-                if (p.getAuthor().contains(athrTf.getText())
-                        && p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
-                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
-                    return true;
-                }
+            if (!athrTf.getText().isEmpty()
+                    && !(edtnLowlimTf.getText().isEmpty() && edtnUplimTf.getText().isEmpty())
+                    && p.getAuthor().contains(athrTf.getText())
+                    && p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
+                    && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
+                return true;
             }
 
-            if (bknmTf.getText().isEmpty()) {
-
-            } else {
-                if (p.getNameBook().contains(bknmTf.getText())) {
-                    return true;
-                }
+            if (!bknmTf.getText().isEmpty() && p.getNameBook().contains(bknmTf.getText())) {
+                return true;
             }
 
-            if (edtnUplimTf.getText().isEmpty() && edtnLowlimTf.getText().isEmpty()) {
-
-            } else {
-                if (p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
-                        && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
-                    quantity++;
-                    return true;
-                }
+            if (!edtnUplimTf.getText().isEmpty() && !edtnLowlimTf.getText().isEmpty()
+                    && p.getEdition() < Integer.parseInt(edtnUplimTf.getText())
+                    && p.getEdition() > Integer.parseInt(edtnLowlimTf.getText())) {
+                return true;
             }
 
-            if (allUplimTf.getText().isEmpty() && allLowlimTf.getText().isEmpty()) {
-
-            } else {
-                if (p.getAll() < Integer.parseInt(allUplimTf.getText())
-                        && p.getAll() > Integer.parseInt(allLowlimTf.getText())) {
-                    quantity++;
-                    return true;
-                }
+            if (!allUplimTf.getText().isEmpty() && !allLowlimTf.getText().isEmpty()
+                    && p.getAll() < Integer.parseInt(allUplimTf.getText())
+                    && p.getAll() > Integer.parseInt(allLowlimTf.getText())) {
+                return true;
             }
             return predicate;
         });
