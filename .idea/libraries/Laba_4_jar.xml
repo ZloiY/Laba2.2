@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Laba_4_jar">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../Laba_4/out/artifacts/Laba_4_jar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../Laba_4/out/artifacts/Laba_4_jar" recursive="false" />
+  </library>
+</component>

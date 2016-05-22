@@ -20,9 +20,12 @@ public class FileChoose{
     XmlParse sv = new XmlParse();
 
     public void openFile(Stage window){
-        fileChooser.setTitle("Choose file");
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        file = fileChooser.showOpenDialog(window);
+//        fileChoose = new App();
+//        fileChoose.setWindow(window);
+//        file = fileChoose.get
+//        fileChooser.setTitle("Choose file");
+//        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+//        file = fileChooser.showOpenDialog(window);
 //        try{
 //            desktop.open(file);
 //        }catch (IOException ex){
